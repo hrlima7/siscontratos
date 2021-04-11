@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -35,6 +36,8 @@ public class Contrato {
 	@Column(name = "vl_global")
 	private BigDecimal valorGlobal;
 	
+	@ManyToOne
+	private Gestao gestao;
 	
 
 }
