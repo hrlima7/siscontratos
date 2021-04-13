@@ -1,14 +1,24 @@
 package br.com.roma.Exception;
 
-public class ContratoNaoEncontradoException extends RuntimeException{
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
-	public ContratoNaoEncontradoException(String message){
-		super("Contrato Não localizado ");
-	}
+public class ContratoNaoEncontradoException extends ResponseStatusException{
+
+
 	
-	public ContratoNaoEncontradoException(Long contratoId){
-		this(String.format("Não existe um cadastro de Contrato com código !!!!!! %d", contratoId));
+	public ContratoNaoEncontradoException(HttpStatus status, String menssagem) {
+		super(status, menssagem);
+		
 	}
+
+	public ContratoNaoEncontradoException(String menssagem) {
+		this(HttpStatus.BAD_GATEWAY, menssagem);
+		
+	}
+
+	
+	
 	
 }
 	

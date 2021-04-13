@@ -17,7 +17,7 @@ public class Gestao {
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+	private Long id;
 	private String gestor;
 	private String fiscal;
 }

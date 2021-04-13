@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +28,8 @@ public class ContratoService implements Serializable  {
 	public Contrato buscarOuFalhar(Long id) {
 		
 	return  contratoRespository.findById(id)
-				.orElseThrow(() -> new ContratoNaoEncontradoException(id));
+				.orElseThrow(() -> new ContratoNaoEncontradoException(HttpStatus.NOT_FOUND,
+						"CONTRATO NAO ENCONTRADO !!!"));
 	
 	}
 
@@ -36,6 +38,8 @@ public class ContratoService implements Serializable  {
 		return contratoRespository.save(contrato);
 	
 	}
+	
+	
 	
 	
 }
