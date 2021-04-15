@@ -24,6 +24,7 @@ public class Contrato {
 	@Id
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull
 	private Long id;
 	
 	private  String descricao;

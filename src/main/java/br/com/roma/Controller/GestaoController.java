@@ -44,7 +44,7 @@ public class GestaoController {
 	}
 	
 	@PostMapping
-	public Gestao salvar(@RequestBody Gestao gestao) {
+	public Gestao salvar(@RequestBody  Gestao gestao) {
 		return gestaoService.salvar(gestao);
 	}
 	

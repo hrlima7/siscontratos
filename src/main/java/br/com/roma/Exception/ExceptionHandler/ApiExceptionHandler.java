@@ -28,18 +28,18 @@ public class ApiExceptionHandler extends  ResponseEntityExceptionHandler {
 			
 		return ResponseEntity.status(HttpStatus.NOT_FOUND)
 				.body(problema);
-				
+	}		
 
 		@Override
 		protected ResponseEntity<Object> handleExceptionInternal(
-				Exception ex, @Nullable Object body, HttpHeaders headers, 
+				Exception ex, Object body, HttpHeaders headers, 
 				HttpStatus status, WebRequest request) {
 
 					body = Problema.builder()
 					.dataHora(LocalDateTime.now())
 					.mensagem(status.getReasonPhrase()).build();
 			
-			return super.handleExceptionInternal(ex, body, headers, status, request)
+			return super.handleExceptionInternal(ex, body, headers, status, request);
 		
 	}
 	

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import br.com.roma.domain.Contrato;
 
 @Repository
-public interface ContratoRepository extends JpaRepository<Contrato, Long> {
+public interface ContratoRepository extends JpaRepository<Contrato, Long>, ArquivoRepositoryQueriess {
 
 	
 	
