@@ -4,9 +4,12 @@ import org.springframework.stereotype.Repository;
 
 import br.com.roma.domain.ArquivoContrato;
 
-@Repository
-public interface ArquivoRepositoryQueriess {
+
+public interface ArquivoContratoRepositoryQueries  {
 	
 		ArquivoContrato save(ArquivoContrato arquivo);
+	
+		
+	
 
 }

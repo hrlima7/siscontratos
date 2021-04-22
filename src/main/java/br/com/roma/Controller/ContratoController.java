@@ -1,5 +1,6 @@
 package br.com.roma.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,7 @@ public class ContratoController {
 	
 	@GetMapping
 	public ResponseEntity<?> listar(){
-		
-		
+			
 		List<Contrato> contratos =  contratoService.listar();
 		return ResponseEntity.ok(contratos);
 		
@@ -53,19 +53,20 @@ public class ContratoController {
 	
 	@PutMapping(path = "/{contratoId}/arquivo" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ArquivoContrato salvarArquivo(@PathVariable Long contratoId,
-				InputArquivoPDF arquivo) {
+				InputArquivoPDF arquivo) throws IOException {
+		
 		
 		Contrato contrato = buscar(contratoId);
 		
 				ArquivoContrato arquivoContrato =  new ArquivoContrato();
-		
+					arquivoContrato.setContrato(contrato);
 					arquivoContrato.setNome_arquivo(arquivo.getArquivo().getOriginalFilename());
 					arquivoContrato.setDescricao(arquivo.getDescricao());
 					arquivoContrato.setContent_type(arquivo.getArquivo().getContentType());
 					arquivoContrato.setTamanho(arquivo.getArquivo().getSize());
 		
 		
-		return arquivoContratoService.salvar(arquivoContrato);
+		return arquivoContratoService.salvar(arquivoContrato, arquivo.getArquivo().getInputStream());
 	}
 	
 	
