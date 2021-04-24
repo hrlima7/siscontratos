@@ -53,19 +53,18 @@ public class ContratoService implements Serializable  {
 	}
 	
 	@Transactional
-	public void cadastrarPagamneto(Long  contratoId,Pagamento pagamento) {
+	public void cadastrarPagamneto(Long  contratoId, Pagamento pagamento) {
 		Contrato contrato = buscarOuFalhar(contratoId);
 				
-	
+					System.out.println(pagamento);
+		
+		
 					Pagamento pagamentonovo =  new Pagamento();
-					
 					pagamentonovo.setIdContrato(contrato);
 					
-				
-					
-					
+					 System.out.println(pagamentonovo);
 					contrato.cadastrarPagamento(pagamentonovo);
-			  System.out.println(pagamentonovo);
+			 // System.out.println(contrato);
 	}
 	
 	

@@ -66,7 +66,7 @@ public class Contrato {
 
 	
 	public Boolean cadastrarPagamento(Pagamento pagamento) {
-		return  getPagamentos().contains(pagamento);
+		return  getPagamentos().add(pagamento);
 		
 	}
 	
