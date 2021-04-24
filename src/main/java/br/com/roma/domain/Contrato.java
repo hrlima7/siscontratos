@@ -2,6 +2,8 @@ package br.com.roma.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.sun.istack.NotNull;
 
@@ -45,5 +48,27 @@ public class Contrato {
 	@NotNull
 	private Gestao gestao;
 	
+	@Column(name="ativo")
+	private boolean ativo = true;
+		
+	@OneToMany(mappedBy= "idContrato")
+	private List<Pagamento> pagamentos = new ArrayList<>();
+	
+	
+	
+	public void ativar() {
+	setAtivo(true);
+	}
+	
+	public void desativar() {
+	setAtivo(false);
+	}
 
+	
+	public Boolean cadastrarPagamento(Pagamento pagamento) {
+		return  getPagamentos().contains(pagamento);
+		
+	}
+	
+	
 }

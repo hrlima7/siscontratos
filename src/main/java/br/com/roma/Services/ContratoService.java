@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.roma.Exception.ContratoNaoEncontradoException;
 import br.com.roma.Repository.ContratoRepository;
 import br.com.roma.domain.Contrato;
+import br.com.roma.domain.Pagamento;
 
 @Service
 public class ContratoService implements Serializable  {
@@ -39,7 +40,33 @@ public class ContratoService implements Serializable  {
 	
 	}
 	
+	@Transactional
+	public void  ativarContrato(Long contratoId) {
+				Contrato contratoEncontrado =  buscarOuFalhar(contratoId);
+					contratoEncontrado.ativar();
+	}
 	
+	@Transactional
+	public void desativarContrato(Long contratoId) {
+		Contrato contratoEncontrado =  buscarOuFalhar(contratoId);
+				contratoEncontrado.desativar();
+	}
+	
+	@Transactional
+	public void cadastrarPagamneto(Long  contratoId,Pagamento pagamento) {
+		Contrato contrato = buscarOuFalhar(contratoId);
+				
+	
+					Pagamento pagamentonovo =  new Pagamento();
+					
+					pagamentonovo.setIdContrato(contrato);
+					
+				
+					
+					
+					contrato.cadastrarPagamento(pagamentonovo);
+			  System.out.println(pagamentonovo);
+	}
 	
 	
 }
